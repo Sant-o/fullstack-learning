@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d89ef;
+            --accent: #ffb900;
+            --bg: #f4f6fb;
+            --card-bg: #fff;
+            --text: #222;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--accent);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .about-img {
+            flex: 1 1 180px;
+            max-width: 180px;
+            margin-right: 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(45,137,239,0.15);
+        }
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+        .about-text {
+            flex: 2 1 300px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            min-width: 120px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            transition: transform 0.2s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--accent);
+            color: #fff;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(45,137,239,0.15);
+        }
+        .project-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .project-content {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 0 0 0.5rem 0;
+        }
+        .project-desc {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        .project-link {
+            align-self: flex-end;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        .project-link:hover {
+            color: var(--primary);
+        }
+        footer {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 700px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-img {
+                margin: 0 0 1rem 0;
+            }
+            .skills {
+                flex-direction: column;
+                align-items: center;
+            }
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Santhosh Zadda</h1>
+        <p>Machine Learning Engineer</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="about" class="about">
+            <div class="about-img">
+                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fnice-man&psig=AOvVaw0BlIrkZXjX8yzCFlUIhC53&ust=1757412705239000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKCl6uroyI8DFQAAAAAdAAAAABAE alt="Jane Doe">
+            </div>
+            <div class="about-text">
+                <h2 class="section-title">About Me</h2>
+                <p>
+                    Hi! I'm Santhosh Zadda, a passionate developer crafting modern web experiences. I love building scalable apps, designing beautiful interfaces, and solving real-world problems with code. Let's create something amazing together!
+                </p>
+            </div>
+        </section>
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills">
+                <div class="skill-card">Data Science</div>
+                <div class="skill-card">Machine Learning</div>
+                <div class="skill-card">Deep Learning</div>
+                <div class="skill-card">Algorithms</div>
+                <div class="skill-card">TensorFlow</div>
+                <div class="skill-card">NLP</div>
+                <div class="skill-card">GEN AI</div>
+                <div class="skill-card">HTML5</div>
+                <div class="skill-card">CSS3</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">Git & GitHub</div>
+                <div class="skill-card">UI/UX Design</div>
+            </div>
+        </section>
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img class="project-img" src="https://i.ytimg.com/vi/g2YIFkAUg14/maxresdefault.jpg alt="Project 1">
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">AI Attendace Recognition System</div>
+                            <div class="project-desc">AI Attendance Regognition System helps to do the task easier by taking the attendace in a smart way by detecting the facing of the attendees is recognis the faces and takes the Attendance</div>
+                        </div>
+                        <a class="project-link" href="#" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img class="project-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80 alt="Project 2">
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">AI Chatbot</div>
+                            <div class="project-desc">AI Chatbot appa helps to open it and run on any websites, we can just drag the screenshot to the chatbot's camera icon it jus guves the result even in the chatbots like chatgpt,copilot etc... it opens on them and can clarify any doubts if we are facing them on out chatbots.</div>
+                        </div>
+                        <a class="project-link" href="#" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img class="project-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80 alt="Project 3">
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">AI Alarm app</div>
+                            <div class="project-desc">A responsive dashboard that fetches live weather data using APIs, with charts and location search.</div>
+                        </div>
+                        <a class="project-link" href="#" target="_blank">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <form style="background:var(--card-bg);box-shadow:var(--shadow);border-radius:8px;padding:2rem;max-width:500px;margin:0 auto;">
+                <div style="margin-bottom:1rem;">
+                    <input type="text" placeholder="Your Name" required style="width:100%;padding:0.7rem;border-radius:4px;border:1px solid #ddd;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <input type="email" placeholder="Your Email" required style="width:100%;padding:0.7rem;border-radius:4px;border:1px solid #ddd;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <textarea placeholder="Your Message" required style="width:100%;padding:0.7rem;border-radius:4px;border:1px solid #ddd;min-height:80px;"></textarea>
+                </div>
+                <button type="submit" style="background:var(--primary);color:#fff;padding:0.7rem 2rem;border:none;border-radius:4px;font-weight:700;cursor:pointer;transition:background 0.2s;">Send</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Jane Doe. All rights reserved.
+    </footer>
+</body>
+</html></div>
