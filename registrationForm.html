@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Registration Form</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 15px 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      width: 100%;
+      transition: border 0.3s;
+    }
+
+    input:invalid, select:invalid {
+      border-color: red;
+    }
+
+    .skills-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .skills-options label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #f7f7f7;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      transition: background 0.2s;
+    }
+
+    .skills-options label:hover {
+      background: #e3e3ff;
+    }
+
+    .error {
+      grid-column: span 2;
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 12px;
+      border: none;
+      background: #4e54c8;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #ff6b6b;
+      transform: scale(1.05);
+    }
+
+    /* Success screen */
+    .success-container {
+      display: none;
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      position: relative;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .success-container .tick {
+      font-size: 80px;
+      color: green;
+    }
+
+    .success-container h3 {
+      color: green;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    /* Exit/Resubmit box */
+    .top-box {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: black;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-box button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .top-box button:hover {
+      text-decoration: underline;
+    }
+
+    /* Thank You */
+    .thankyou-container {
+      display: none;
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      max-width: 600px;
+      width: 100%;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container" id="formBox">
+    <h2>Student Registration Form</h2>
+    <form id="regForm">
+      <!-- Name -->
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <!-- Email -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <!-- Course -->
+      <label for="course">Course:</label>
+      <select id="course" name="course" required>
+        <option value="">Select a course</option>
+        <option value="web">Web Development</option>
+        <option value="ai">Artificial Intelligence</option>
+        <option value="ds">Data Science</option>
+      </select>
+
+      <!-- Skills -->
+      <label>Skills:</label>
+      <div class="skills-options">
+        <label><input type="checkbox" name="skills" value="SDE"> SDE</label>
+        <label><input type="checkbox" name="skills" value="ML"> ML</label>
+        <label><input type="checkbox" name="skills" value="DL"> DL</label>
+        <label><input type="checkbox" name="skills" value="DS"> DS</label>
+        <label><input type="checkbox" name="skills" value="DEO"> DEO</label>
+        <label><input type="checkbox" name="skills" value="HR"> HR</label>
+      </div>
+
+      <!-- GitHub -->
+      <label for="github">GitHub Link:</label>
+      <input type="url" id="github" name="github" placeholder="https://github.com/username" required>
+
+      <!-- Password -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" minlength="6" required>
+
+      <!-- Confirm Password -->
+      <label for="confirm">Confirm Password:</label>
+      <input type="password" id="confirm" name="confirm" minlength="6" required>
+
+      <!-- Error -->
+      <div id="error" class="error">Passwords didn’t match!</div>
+
+      <!-- Submit -->
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <!-- Success Screen -->
+  <div class="success-container" id="successBox">
+    <div class="top-box">
+      <button id="exitBtn">Exit</button>
+      <button id="resubmitBtn">Resubmit</button>
+    </div>
+    <div class="tick">✔</div>
+    <h3>Submission Successful!</h3>
+  </div>
+
+  <!-- Thank You Screen -->
+  <div class="thankyou-container" id="thankyouBox">
+    <p>🎉 Thank You for Visiting!</p>
+  </div>
+
+  <script>
+    const form = document.getElementById("regForm");
+    const password = document.getElementById("password");
+    const confirm = document.getElementById("confirm");
+    const errorMsg = document.getElementById("error");
+    const formBox = document.getElementById("formBox");
+    const successBox = document.getElementById("successBox");
+    const thankyouBox = document.getElementById("thankyouBox");
+    const exitBtn = document.getElementById("exitBtn");
+    const resubmitBtn = document.getElementById("resubmitBtn");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // Stop default submission
+
+      errorMsg.style.display = "none";
+
+      const skills = document.querySelectorAll('input[name="skills"]:checked');
+      if (skills.length === 0) {
+        errorMsg.textContent = "Please select at least one skill!";
+        errorMsg.style.display = "block";
+        return;
+      }
+
+      if (password.value !== confirm.value) {
+        errorMsg.textContent = "Passwords didn’t match!";
+        errorMsg.style.display = "block";
+      } else if (form.checkValidity()) {
+        formBox.style.display = "none";
+        successBox.style.display = "block";
+        form.reset();
+      }
+    });
+
+    resubmitBtn.addEventListener("click", () => {
+      successBox.style.display = "none";
+      formBox.style.display = "block";
+    });
+
+    exitBtn.addEventListener("click", () => {
+      successBox.style.display = "none";
+      thankyouBox.style.display = "block";
+      // Close page after 2 seconds
+      setTimeout(() => {
+        window.close();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
