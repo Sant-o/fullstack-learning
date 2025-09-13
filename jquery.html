@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <button id="btn">click here</button>
+    <p id="text">HI! there</p>
+    <P>this is just for fun</P>
+    <div class="temp"></div>
+    <div class ="temp1"></div>
+    
+    <p1>hello start your  coding journey</p1>
+    <script>
+        $(document).ready(function() {
+            $('#btn').dblclick(function() {
+                $('#text').text('Button Clicked!');
+                $('#text').text('Button Clicked!');
+                $('.temp').html('<h1>Welcome to jQuery!</h1>');
+                $('p1').css('color', 'red');
+                $('p1').css('font-size', '20px');
+                $('p1').css('background-color', 'lightgray');
+                $('p1').css('padding', '10px');
+                
+            });
+        });
+        
+
+        function showMessage() {
+            $('#text').text('Hello from another function!');
+        }
+s
+        // Run this when the document is ready
+        $(document).ready(function() {
+            
+            $('.temp1').html('<h1>Welcome to jQuery!</h1>');
+            // Bind a click event to the button
+            $('#btn').click(function() {
+                showMessage(); // Call the function here
+            });
+        });
+
+    </script>
+</body>
+</html>
